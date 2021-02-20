@@ -1,16 +1,16 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ArkSpawnCodeGen")]
+[assembly: AssemblyTitle("ARK Spawncode Generator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Dr. Pennysworth")]
-[assembly: AssemblyProduct("ArkSpawnCodeGen")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("ARKMod.net")]
+[assembly: AssemblyProduct("ARK Spawncode Generator")]
+[assembly: AssemblyCopyright("ARKMod.net �  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,8 +19,9 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7e361a54-a631-4204-a1ae-8a6458edd60b")]
+// The following GUID is for the ID of the typelib if this project is exposed to COM.
+
+[assembly: Guid("07d41b53-92de-4e50-ab41-5b12cf08c7e7")]
 
 // Version information for an assembly consists of the following four values:
 //
