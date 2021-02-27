@@ -131,6 +131,7 @@ namespace ArkSpawnCodeGen
                         Value = s
                     });
                     engramFile.Add(s);
+                    continue;
                 }
                 if (filename.StartsWith("BP_"))
                 {
@@ -141,6 +142,7 @@ namespace ArkSpawnCodeGen
                         Value = s
                     });
                     blueprintFile.Add(s);
+                    continue;
                 }
                 if (filename.StartsWith("PrimalItem"))
                 {
@@ -158,26 +160,23 @@ namespace ArkSpawnCodeGen
                     });
                     primalItemsFile.Add(ss);
                     spawncodeItemsFile.Add(s);
+                    continue;
                 }
                 if (filename.StartsWith("Character_BP"))
                 {
                     var s = "admincheat SpawnDino " + ((char)34) + "Blueprint'" + item.Replace(path, PATH_PREFIX).Replace(".uasset", "." + filename).Replace(@"\", "/") + "'" + ((char)34) + " 500 0 0 120";
+                    var ss = "admincheat GMSummon " + ((char)34) + filename + ((char)34) + " 120";
                     summeryFile.Add(new Summery
                     {
                         Type = SummeryEnum.SPAWNCODE_CREATURE,
                         Value = s
                     });
-                    spawncodeCreatureFile.Add(s);
-                }
-                if (filename.StartsWith("Character_BP"))
-                {
-                    var s = "admincheat GMSummon " + ((char)34) + filename + ((char)34) + " 120";
                     summeryFile.Add(new Summery
                     {
                         Type = SummeryEnum.SPAWNCODE_CREATURE,
-                        Value = s
+                        Value = ss
                     });
-                    spawncodeCreatureFile.Add(s);
+                    continue;
                 }
             }
         }
