@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/build@main
+    - uses: actions/checkout@v2
     - name: Setup .Net Core 3.1
       uses: actions/setup-dotnet@v1
       with:
