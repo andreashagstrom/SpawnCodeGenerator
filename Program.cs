@@ -26,6 +26,7 @@ namespace SpawnCodeGenerator
 
         private const string OUTPUT_PATH = "Output/";
         private static string PATH_PREFIX = "/Game/Mods/";
+        private static string ORIGINAL_PATH = "/Game/Mods/";
 
         /// <summary>
         /// List of all read files
@@ -48,9 +49,12 @@ namespace SpawnCodeGenerator
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+
             var path = Directory.GetCurrentDirectory();
             var modFolder = path.Split('\\').Last();
-            PATH_PREFIX += modFolder;
+            var modId = GetValidModFolder(modFolder);
+            ORIGINAL_PATH += modFolder;
+            PATH_PREFIX += modId;
 
             Console.WriteLine(Environment.NewLine);
             WriteColor(@"[$$$$$$$$\ $$\                       $$\            $$$$$$\                  $$\]", ConsoleColor.DarkGreen);
@@ -68,7 +72,8 @@ namespace SpawnCodeGenerator
             WriteColor($"[// Autor:] {Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright}", ConsoleColor.DarkGreen);
             WriteColor(@"[//--Settings-----------------------------------------------------]", ConsoleColor.DarkGreen);
             WriteColor($"[// Output folder:] {OUTPUT_PATH}", ConsoleColor.DarkGreen);
-            WriteColor($"[// Mod folder name:] {modFolder} (Absolute path: {PATH_PREFIX})", ConsoleColor.DarkGreen);
+            WriteColor($"[// Mod Id folder name:] {modId} (Absolute path: {PATH_PREFIX})", ConsoleColor.DarkGreen);
+            WriteColor($"[// Mod folder name:] {modFolder} (Absolute path: {ORIGINAL_PATH})", ConsoleColor.DarkGreen);
             WriteColor(@"[//---------------------------------------------------------------]", ConsoleColor.DarkGreen);
             WriteColor($"[// Blueprints:] To read blueprints they must begin with BP_", ConsoleColor.DarkGreen);
             WriteColor($"[// Engrams:] To read engrams they must begin with EngramEntry", ConsoleColor.DarkGreen);
@@ -102,6 +107,39 @@ namespace SpawnCodeGenerator
                 WriteColor(@"[//---------------------------------------------------------------]", ConsoleColor.DarkRed);
             }
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Check if the folder is a mod id. If then try to read a modmeta.info file to get the original name
+        /// </summary>
+        /// <param name="baseFolder">Foldername of the mod</param>
+        /// <returns>Original name of the mod folder</returns>
+        static string GetValidModFolder(string baseFolder)
+        {
+            int modId;
+            string modName = "";
+            bool isMod = int.TryParse(baseFolder, out modId);
+
+            if(!isMod)
+            {
+                return baseFolder;
+            }
+
+            foreach (var file in Directory.GetFiles("./"))
+            {
+                var filename = file.Split('\\').Last();
+
+                if (filename.Equals("./modmeta.info"))
+                {
+                    var parts = File.ReadAllText(filename).Split('/');
+                    if (parts.Count() >= 3)
+                    {
+                        modName = parts[3];
+                    }
+                }
+            }
+
+            return string.IsNullOrEmpty(modName) ? baseFolder : modName;
         }
 
         /// <summary>
@@ -165,7 +203,7 @@ namespace SpawnCodeGenerator
                     spawncodeItemsFile.Add(s);
                     continue;
                 }
-                if (filename.StartsWith("Character_BP"))
+                if (filename.Contains("Character_BP"))
                 {
                     var s = "admincheat SpawnDino " + ((char)34) + "Blueprint'" + item.Replace(path, PATH_PREFIX).Replace(".uasset", "." + filename).Replace(@"\", "/") + "'" + ((char)34) + " 500 0 0 120";
                     var ss = "admincheat GMSummon " + ((char)34) + filename + ((char)34) + " 120";
