@@ -14,8 +14,6 @@ This tool uses dotnet 3.1 and can just be started. It´s a single .exe file and 
 
 ## Other Projects
 
-If you want to have more features you should have a look on our Homepage. We have a tool called Ark Devgenerator. 
-
-The Ark Devgenerator by First-Coder is the only Ark spawn code generator with interfaces available in the Ark area. The product is available for a small donation. The Ark Devgenerator is a completely self-developed tool to generate spawn codes, engrams, blueprint codes and gamedata files for the Arkmanager. There is the possibility of file output, saving and editing in a local database. In addition, spawncodes, blueprints and dinospawncodes can be generated and output from all mods in the Ark Devkit or all mods in the Ark directory. The export and generation can be customised with a number of options. To get more Information see our [Homepage](https://first-coder.de/).
+If you want to have more features you should have a look on our Homepage. We have a tool called Ark Devgenerator. The Ark Devgenerator by First-Coder is the only Ark spawn code generator with interfaces available in the Ark area. The product is available for a small donation. The Ark Devgenerator is a completely self-developed tool to generate spawn codes, engrams, blueprint codes and gamedata files for the Arkmanager. There is the possibility of file output, saving and editing in a local database. In addition, spawncodes, blueprints and dinospawncodes can be generated and output from all mods in the Ark Devkit or all mods in the Ark directory. The export and generation can be customised with a number of options. To get more Information see our [Homepage](https://first-coder.de/).
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=8PBF4BN7R46TE)
