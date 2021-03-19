@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SpawnCodeGenerator.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace ArkSpawnCodeGen
+namespace SpawnCodeGenerator
 {
     class Program
     {
@@ -50,19 +52,20 @@ namespace ArkSpawnCodeGen
             var modFolder = path.Split('\\').Last();
             PATH_PREFIX += modFolder;
 
-            WriteColor(@"[ $$$$$$\            $$\       $$\      $$\                 $$\ ]", ConsoleColor.Yellow);
-            WriteColor(@"[$$  __$$\           $$ |      $$$\    $$$ |                $$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[$$ /  $$ | $$$$$$\  $$ |  $$\ $$$$\  $$$$ | $$$$$$\   $$$$$$$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[$$$$$$$$ |$$  __$$\ $$ | $$  |$$\$$\$$ $$ |$$  __$$\ $$  __$$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[$$  __$$ |$$ |  \__|$$$$$$  / $$ \$$$  $$ |$$ /  $$ |$$ /  $$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[$$ |  $$ |$$ |      $$  _$$<  $$ |\$  /$$ |$$ |  $$ |$$ |  $$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[$$ |  $$ |$$ |      $$ | \$$\ $$ | \_/ $$ |\$$$$$$  |\$$$$$$$ |]", ConsoleColor.Yellow);
-            WriteColor(@"[\__|  \__|\__|      \__|  \__|\__|     \__| \______/  \_______|]", ConsoleColor.Yellow);
-
+            Console.WriteLine(Environment.NewLine);
+            WriteColor(@"[$$$$$$$$\ $$\                       $$\            $$$$$$\                  $$\]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$  _____|\__|                      $$ |          $$  __$$\                 $$ |]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$ |      $$\  $$$$$$\   $$$$$$$\ $$$$$$\         $$ /  \__| $$$$$$\   $$$$$$$ | $$$$$$\   $$$$$$\]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$$$$\    $$ |$$  __$$\ $$  _____|\_$$  _|$$$$$$\ $$ |      $$  __$$\ $$  __$$ |$$  __$$\ $$  __$$\]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$  __|   $$ |$$ |  \__|\$$$$$$\    $$ |  \______|$$ |      $$ /  $$ |$$ /  $$ |$$$$$$$$ |$$ |  \__|]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$ |      $$ |$$ |       \____$$\   $$ |$$\       $$ |  $$\ $$ |  $$ |$$ |  $$ |$$   ____|$$ |]", ConsoleColor.DarkGreen);
+            WriteColor(@"[$$ |      $$ |$$ |      $$$$$$$  |  \$$$$  |      \$$$$$$  |\$$$$$$  |\$$$$$$$ |\$$$$$$$\ $$ |]", ConsoleColor.DarkGreen);
+            WriteColor(@"[\__|      \__|\__|      \_______/    \____/        \______/  \______/  \_______| \_______|\__|]", ConsoleColor.DarkGreen);
             Console.WriteLine(Environment.NewLine);
             WriteColor(@"[//--Informationen------------------------------------------------]", ConsoleColor.DarkGreen);
-            WriteColor($"[// Title:] ARK Spawncode Generator", ConsoleColor.DarkGreen);
-            WriteColor($"[// Autor:] derda, L. Gmann", ConsoleColor.DarkGreen);
+            WriteColor($"[// Title:] {Assembly.GetEntryAssembly().GetName().Name}", ConsoleColor.DarkGreen);
+            WriteColor($"[// Version:] {Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version}", ConsoleColor.DarkGreen);
+            WriteColor($"[// Autor:] {Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright}", ConsoleColor.DarkGreen);
             WriteColor(@"[//--Settings-----------------------------------------------------]", ConsoleColor.DarkGreen);
             WriteColor($"[// Output folder:] {OUTPUT_PATH}", ConsoleColor.DarkGreen);
             WriteColor($"[// Mod folder name:] {modFolder} (Absolute path: {PATH_PREFIX})", ConsoleColor.DarkGreen);
@@ -115,7 +118,7 @@ namespace ArkSpawnCodeGen
             File.Delete(OUTPUT_PATH + PRIMAL_ITEMS_FILE + ".txt");
             File.Delete(OUTPUT_PATH + SPAWNCODE_ITEMS_FILE + ".txt");
             File.Delete(OUTPUT_PATH + SPAWNCODE_CREATURE_FILE + ".txt");
-            
+
             var path = Directory.GetCurrentDirectory();
             var allItems = Directory.GetFiles(Directory.GetCurrentDirectory(), "*", SearchOption.AllDirectories);
 
@@ -190,7 +193,7 @@ namespace ArkSpawnCodeGen
             var type = "";
             foreach (var item in summeryFile.OrderBy(el => el.Type))
             {
-                if(type.Equals("") || !type.Equals(item.Type.ToString()))
+                if (type.Equals("") || !type.Equals(item.Type.ToString()))
                 {
                     if (!type.Equals(""))
                     {
