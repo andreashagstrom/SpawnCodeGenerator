@@ -2,6 +2,8 @@
 
 ---
 
+[![.NET](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/dotnet.yml) [![CodeQL](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/codeql-analysis.yml)
+
 # ARK Spawncode Generator
 
 ## Description
