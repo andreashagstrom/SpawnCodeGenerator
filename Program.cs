@@ -95,7 +95,7 @@ namespace ArkSpawnCodeGen
                 File.AppendAllText("Output.txt", dinoTHeader + Environment.NewLine);
                 foreach (var item in allItems)
                 {
-                    var filename = Path.GetFileNameWithoutExtension(item);
+                    var filename = Path.GetFileNameWithoutExtension(item) + "_C";
 
                     if (filename.Contains("Character_BP"))
                     {
