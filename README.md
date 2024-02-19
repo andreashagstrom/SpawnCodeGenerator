@@ -1,10 +1,10 @@
-[![First-Coder](https://first-coder.de/images/logos/LogoFirstCoderDarkHorizontal.png)](https://first-coder.de/)
+<p align="center">
+  <img src="https://github.com/First-Coder/SpawnCodeGenerator/assets/13957661/3d2fc4cb-9a14-4e7e-912e-274935c456c3">
+</p>
 
 ---
 
 [![.NET](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/dotnet.yml) [![CodeQL](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/First-Coder/SpawnCodeGenerator/actions/workflows/codeql-analysis.yml)
-
-# ARK Spawncode Generator
 
 ## Description
 
